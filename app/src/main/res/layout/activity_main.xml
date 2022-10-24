@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.083" />
 
     <Button
-        android:id="@+id/attantion_btn"
+        android:id="@+id/btn_attantion"
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
@@ -35,14 +35,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/react_btn"
+        android:id="@+id/btn_react"
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
         android:text="@string/reaction"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/attantion_btn"
-        app:layout_constraintStart_toStartOf="@+id/attantion_btn"
-        app:layout_constraintTop_toBottomOf="@+id/attantion_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_attantion"
+        app:layout_constraintStart_toStartOf="@+id/btn_attantion"
+        app:layout_constraintTop_toBottomOf="@+id/btn_attantion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
