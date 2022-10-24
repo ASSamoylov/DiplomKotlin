@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/DiplomKotlin/app/src/main/res/layout/activity_attention.xml" value="0.2817443351859769" />
+        <entry key="..\:/AndroidProjects/DiplomKotlin/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/DiplomKotlin/app/src/main/res/layout/activity_memory_alt.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/DiplomKotlin/app/src/main/res/layout/attantion_try.xml" value="0.22881944444444444" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
