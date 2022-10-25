@@ -5,13 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Attention">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/textWelcome2"
+        app:layout_constraintStart_toStartOf="@+id/textWelcome2"
+        app:layout_constraintTop_toBottomOf="@+id/textWelcome2">
+
+        <LinearLayout
+            android:id="@+id/linearChrono"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvExplainChrono"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/chronoTime" />
+
+            <Chronometer
+                android:id="@+id/chrono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearAvgTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvExplainAvgTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tvAvg" />
+
+            <TextView
+                android:id="@+id/tvAvgTimeRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/stub"
+                android:textAlignment="textEnd" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textWelcome2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/shulte"
-        android:textSize="24sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,9 +80,10 @@
         android:layout_marginBottom="24dp"
         android:text="@string/explainShylte"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutButton"
         app:layout_constraintEnd_toEndOf="@+id/textWelcome2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="@+id/textWelcome2" />
 
     <TextView
@@ -36,16 +94,18 @@
         android:layout_marginBottom="24dp"
         android:text="@string/fill"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutButton"
         app:layout_constraintStart_toEndOf="@+id/textExplain2" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -66,7 +126,8 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/stub"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Button
                 android:id="@+id/button1"
@@ -337,5 +398,27 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/oneTimeBtn"
+        app:layout_constraintEnd_toEndOf="@+id/textWelcome2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textWelcome2"
+        app:layout_constraintTop_toBottomOf="@+id/textWelcome2" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textWelcome2"
+        app:layout_constraintStart_toStartOf="@+id/textWelcome2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,7 @@
     <string name="posCount">Счетчик правильных ответов:</string>
     <string name="negCount">Счетчик неправильных ответов:</string>
     <string name="oneTimeBtn">Готов</string>
+    <string name="chronoTime">Время:</string>
+    <string name="tvAvg">Среднее время ответов:</string>
+    <string name="exit">Вернуться на главный экран</string>
 </resources>

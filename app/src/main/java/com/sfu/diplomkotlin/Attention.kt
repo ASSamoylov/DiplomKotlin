@@ -2,6 +2,7 @@ package com.sfu.diplomkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -11,15 +12,12 @@ class Attention : AppCompatActivity() {
 
     private lateinit var binding: ActivityAttentionBinding
     private var count = 1
+    private var timeArray: ArrayList<Int> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAttentionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.textViewDigit.text = "$count"
-
-        setRandomDigits()
 
         binding.apply {
             button0.setOnClickListener { onClick(button0) }
@@ -47,13 +45,52 @@ class Attention : AppCompatActivity() {
             button22.setOnClickListener { onClick(button22) }
             button23.setOnClickListener { onClick(button23) }
             button24.setOnClickListener { onClick(button24) }
+            buttonStart.setOnClickListener { startEx() }
+            buttonExit.setOnClickListener { finish() }
+
         }
 
 
     }
 
+    private fun startEx (){
+
+        setRandomDigits()
+        binding.apply {
+            textExplain2.visibility = View.VISIBLE
+            linearLayoutButton.visibility = View.VISIBLE
+            linearChrono.visibility = View.VISIBLE
+
+            chrono.start()
+            chrono.base = SystemClock.elapsedRealtime()
+
+            textViewDigit.visibility = View.VISIBLE
+            textViewDigit.text = "$count"
+
+            buttonStart.visibility = View.GONE
+        }
+    }
+
+    private fun finishEx(){
+        val avgTime = reactionTime(timeArray).average()
+        val format = String.format("%.2f", avgTime)
+        binding.apply {
+            chrono.stop()
+            tvAvgTimeRes.text = format
+            linearAvgTime.visibility = View.VISIBLE
+            textExplain2.visibility = View.GONE
+            textViewDigit.visibility = View.GONE
+            buttonExit.visibility = View.VISIBLE
+        }
+        Toast.makeText(
+            this, "Тренажер пройден! Поздравляем!", Toast.LENGTH_SHORT
+        ).show()
+        disableBtn()
+    }
+
+
     //  Такого в оригинально работе не было, так что эксперементы!
-    private fun onClick(button : Button){
+    private fun onClick(button: Button) {
         if (button.text == count.toString())
             updateBtn()
         else
@@ -100,18 +137,21 @@ class Attention : AppCompatActivity() {
         }
     }
 
+    private fun reactionTime(array: ArrayList<Int>): ArrayList<Int> {
+        val reactTime: ArrayList<Int> = ArrayList()
+        for (i in 1 until array.size) {
+            reactTime.add(array[i]-array[i-1])
+        }
+        return reactTime
+    }
+
     private fun updateBtn() {
+        timeArray.add(((SystemClock.elapsedRealtime() - binding.chrono.base) / 1000).toInt())
         count++
-        binding.textViewDigit.text = "$count"
+        binding.textViewDigit.text = count.toString()
         setRandomDigits()
         if (count > 25) {
-            disableBtn()
-            binding.textExplain2.visibility = View.GONE
-            binding.textViewDigit.visibility = View.GONE
-            Toast.makeText(
-                this, "Тренажер пройден! Поздравляем!", Toast.LENGTH_SHORT
-            ).show()
-
+            finishEx()
         }
     }
 
